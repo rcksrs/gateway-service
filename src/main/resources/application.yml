@@ -16,3 +16,14 @@ eureka:
 
 zuul:
   sensitive-headers: Cookie
+  ignored-services: '*'
+  routes:
+    company-service:
+      path: /company-service/**
+      serviceId: company-service
+      strip-prefix: false
+    complaint-service:
+      path: /complaint-service/**
+      serviceId: complaint-service
+      strip-prefix: false
+      
