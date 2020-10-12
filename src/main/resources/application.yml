@@ -3,7 +3,7 @@ spring:
     name: gateway-service
     
 server:
-  port: 5555
+  port: ${PORT:5555}
 
 eureka:  
   client:
@@ -13,4 +13,13 @@ eureka:
       defaultZone: ${DISCOVERY_SERVER:http://localhost:8761/eureka/}
   instance:
     hostname: ${HOSTNAME}
-    nonSecurePort: 80
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include:
+        - routes
+        - info
+        - health
