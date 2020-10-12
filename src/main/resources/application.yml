@@ -5,25 +5,12 @@ spring:
 server:
   port: 5555
 
-eureka:
-  instance:
-    prefer-ip-address: true
+eureka:  
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: ${DISCOVERY_SERVER:http://localhost:8761/eureka/}
-
-zuul:
-  sensitive-headers: Cookie
-  ignored-services: '*'
-  routes:
-    company-service:
-      path: /company-service/**
-      serviceId: company-service
-      strip-prefix: false
-    complaint-service:
-      path: /complaint-service/**
-      serviceId: complaint-service
-      strip-prefix: false
-      
+  instance:
+    hostname: ${HOSTNAME}
+    nonSecurePort: 80
